@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>products show case</title>
+	<meta name="Resource-type" content="Document" />
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<style>
+
+
+	body{
+		color: #333;
+		font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	}
+
+
+	/* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 3.2em;
+		margin: 10px 0 50px 0;
+		-webkit-transition: all 1.3s ease-out;
+		transition: all 1.3s ease-out;
+		width: 60%;
+		height: 80px;
+
+		margin:45px auto 10px;
+
+		opacity: 0;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+
+		-webkit-transform: translate3d(0px, -150%, 0px);
+		transform: translate3d(0px, -150%, 0px);
+	}
+	h2{
+		font-size: 2em;
+		margin: 20px 0 30px 0;
+		-webkit-transition: all 1.3s ease-out;
+		transition: all 1.3s ease-out;
+		width: 60%;
+		height: 60px;
+
+		margin:0 auto;
+
+		opacity: 0;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+
+		-webkit-transform: translate3d(0px, 35px, 0px);
+		transform: translate3d(0px, 35px, 0px);
+	}
+	.cs-active {
+		-webkit-transform: translate3d(0px, 0px, 0px)!important;
+		transform: translate3d(0px, 0px, 0px)!important;
+		opacity: 1!important;
+	}
+
+
+
+	/* Common styles
+	* --------------------------------------- */
+	/*img{
+	    -webkit-transition: all 1s ease-out;
+		transition: all 1s ease-out;
+		margin:0 auto;
+	}*/
+	.section{
+		text-align:center;
+		overflow:hidden;
+	}
+	.cs-box {
+		position: relative;
+		/*width: 1000px;*/
+		width: 100%;
+		margin: 0 auto;
+	}
+	.header {
+		height: 100px;
+		width: 100%;
+		background: #e9f4ff;
+		position: fixed;
+		z-index: 999;
+		padding-left: 100px;
+		padding-right: 100px;
+		left: 0;
+		top: 0;
+		border-bottom : 1px solid #d0d0d0;
+		overflow: hidden;
+	}
+	.footer {
+		width: 100%;
+		background: #fff;
+	}
+	.logo {
+		height: 100%;
+		max-width:100%;
+	}
+	.list {
+		width: 20%;
+		height: 100px;
+		position: absolute;
+		top: 0;
+		left: 60%;
+		background: transparent;
+	}
+	.list a {
+		display: block;
+		line-height: 100px;
+		height: 100px;
+		width: 30%;
+		float: left;
+		color: #000000;
+	    font-size: 15px;
+	    font-weight: 300;
+	    text-decoration: none;
+	    cursor: pointer;
+	    padding: 0px;
+	    margin: 0px;
+	    margin-right: 5%;
+	}
+	.list a:last-child {
+		margin-right: 0;
+	}
+
+
+	/* Overwriting fullPage.js tooltip color
+	* --------------------------------------- */
+	.fp-tooltip{
+		color: #AAA;
+	}
+	#fp-nav span, .fp-slidesNav span{
+		border-color: #AAA;
+	}
+	#fp-nav li .active span, .fp-slidesNav .active span{
+		background: #AAA;
+	}
+
+	</style>
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$(document).scroll(function () {
+				var headerOriginalHeight = 100;
+				var scrollTop = $(document).scrollTop();
+				if( scrollTop < 41){
+					var headerNewHeight = headerOriginalHeight - scrollTop ;
+					$('.header').height(headerNewHeight);
+					$('.list a').css({
+						'line-height': headerNewHeight + 'px'
+					});
+				}else if (scrollTop >= 41){
+					$('.header').height(60).css({
+						'background':'rgba(255,255,255,0.5)'
+					});
+					$('.list a').css({
+						'line-height':'60px'
+					});
+				}
+			});
+
+			$('#fullpage').fullpage({
+
+		        //Scrolling
+		        css3: true,
+		        autoScrolling: false,
+		        fitToSection: false,
+
+		        //Design
+		        controlArrows: true,
+		        verticalCentered: false,
+		        'sectionsColor': ['#F0F2F4', '#effbf7', '#fff', '#f1f4fb', '#fff', '#d9ebff'],
+		        fixedElements: '.footer',
+		        responsiveWidth: 0,
+		        responsiveHeight: 0,
+
+		        //Custom selectors
+		        sectionSelector: '.section',
+		        slideSelector: '.slide',
+
+		        //events
+		        afterRender: function(){
+		        	$('body').css({
+		        		'margin-top' : '100px'
+		        	});
+
+		        },
+		        'afterLoad': function(anchorLink, index){
+					if(index == 1){
+						$('#section0 h1').addClass('cs-active');
+						$('#section0 h2').addClass('cs-active');
+						$('.cs-section0-block').addClass('cs-active');
+						$('.cs-section1-block-circle-0').css({
+							height:$('.cs-section1-block-circle-0').width()
+						});
+						$('.cs-section1-block-circle-1').css({
+							height:$('.cs-section1-block-circle-1').width()
+						});
+						$('.cs-section1-block-circle-2').css({
+							height:$('.cs-section1-block-circle-2').width()
+						});
+						$('.cs-section1-block-circle-3').css({
+							height:$('.cs-section1-block-circle-3').width()
+						});
+					}else if(index == 2){
+						$('#section1 h1').addClass('cs-active');
+						$('#section1 h2').addClass('cs-active');
+						$('.cs-section1-block0').addClass('cs-section1-block0-active');
+						$('.cs-section1-block1').css({
+							opacity:1
+						});
+						$('.cs-section1-block-circle').children().addClass('cs-section1-block-circle-active');
+					}else if(index == 3){
+						$('#section2 h1').addClass('cs-active');
+						$('#section2 h2').addClass('cs-active');
+						$('.cs-section2-block0-mask').addClass('cs-section2-block0-mask-active');
+						$('.cs-section2-img-2').css({
+							opacity:1
+						});
+
+						$('.cs-section2-img-1').addClass('cs-section2-img-1-active');
+						$('.cs-section2-img-3').css({
+							opacity:1
+						});
+						$('.cs-section2-img-4').addClass('cs-section2-img-4-active');
+
+					}else if(index == 4){
+						$('#section3 h1').addClass('cs-active');
+						$('#section3 h2').addClass('cs-active');
+						$('.cs-section3-img').addClass('cs-active');
+						$('.cs-section3-label-1').css({
+							opacity:1
+						});
+						$('.cs-section3-label-2').css({
+							opacity:1
+						});
+						$('.cs-section3-label-3').css({
+							opacity:1
+						});
+						$('.cs-section3-label-4').css({
+							opacity:1
+						});
+						$('.cs-section3-label-5').css({
+							opacity:1
+						});
+						$('.cs-section3-label-6').css({
+							opacity:1
+						});
+
+					}else if(index == 5){
+						$('#section4 h1').addClass('cs-active');
+						$('#section4 h2').addClass('cs-active');
+						$('.cs-section4-img-1').addClass('cs-section4-img-1-active');
+						$('.cs-section4-img-2').addClass('cs-section4-img-2-active');
+						$('.cs-section4-img-3').addClass('cs-section4-img-3-active');
+						
+					}else if(index == 6){
+						$('#section5 h1').addClass('cs-active');
+						$('#section5 h2').addClass('cs-active');
+						$('.cs-section5-img-0').addClass('cs-section5-img-0-active');
+						$('.cs-section5-img-1').addClass('cs-section5-img-1-active');
+						$('.cs-section5-img-2').addClass('cs-section5-img-2-active');
+						$('.cs-section5-img-3').addClass('cs-section5-img-3-active');
+						$('.cs-section5-img-4').addClass('cs-section5-img-4-active');
+						$('.cs-section5-img-5').addClass('cs-section5-img-5-active');
+						$('.cs-section5-block1').css({
+							opacity:1
+						});
+						
+					}
+				},
+
+				'onLeave': function(index, nextIndex, direction){
+					if (index == 3 && direction == 'down'){
+						// $('.section').eq(index -1).removeClass('moveDown').addClass('moveUp');
+					}
+					else if(index == 3 && direction == 'up'){
+						// $('.section').eq(index -1).removeClass('moveUp').addClass('moveDown');
+					}
+				},
+		        afterResize: function(){
+
+		        },
+		        afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+		        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+		    });
+		});
+	</script>
+</head>
+<body>
+
+<div class="header">
+	<img class="logo" src="imgs/logo.png" >
+	<div class="list">
+		<a href="http://192.168.0.104:8080/dataGtheringAndSharing/login.html">登录</a>
+		<a href="#">注册</a>
+		<a href="#">进入系统</a>
+	</div>
+</div>
+
+<div id="fullpage">
+
+<style>
+	/* Section 0
+	* --------------------------------------- */
+	#section0 {
+		background-image: url(imgs/bg.jpg) ;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	#section0 h1 {
+		background-image: url(imgs/title1.png) ;
+	}
+	#section0 h2 {
+		background-image: url(imgs/title1_1.png) ;
+	}
+	#section0 > div {
+		height: 520px;
+	}
+	#section0 .cs-section0-block {
+		width: calc((100% - 140px)/5);
+		height: auto;
+		position: absolute;
+		text-align: center;
+		top: 65px;
+		-webkit-transition: all 1.5s ease-out;
+		transition: all 1.5s ease-out;
+	}
+	#section0 .cs-section0-block h3,
+	#section0 .cs-section0-block h4,
+	#section0 .cs-section0-block-img {
+		margin:15px auto;
+		width: 90%;
+		font-weight: normal;
+	}
+	#section0 .cs_section0_block0 {
+		left: 70px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-100px, 0px, 0px);
+		transform: translate3d(-100px, 0px, 0px);
+	}
+	#section0 .cs_section0_block1 {
+		left: calc((100% - 140px)/5 + 70px);
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-100px, 0px, 0px);
+		transform: translate3d(-100px, 0px, 0px);
+	}
+	#section0 .cs_section0_block2 {
+		left: calc((100% - 140px)/5*2 + 70px);
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(0px, 100px, 0px);
+		transform: translate3d(0px, 100px, 0px);
+	}
+	#section0 .cs_section0_block3 {
+		left: calc((100% - 140px)/5*3 + 70px);
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(100px, 0px, 0px);
+		transform: translate3d(100px, 0px, 0px);
+	}
+	#section0 .cs_section0_block4 {
+		left: calc((100% - 140px)/5*4 + 70px);
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(100px, 0px, 0px);
+		transform: translate3d(100px, 0px, 0px);
+	}
+</style>
+
+	<div class="section fp-auto-height" id="section0">
+		<div>
+			<h1></h1>
+			<h2></h2>
+			<div class="cs-box">
+				<div class="cs-section0-block cs_section0_block0" id="id_section0_block0">
+					<img src="imgs/img1_1.png" alt="">
+					<h4>提供数据字段属性查询，数据清洗抽取、分类提供前台应用数据进一步抽取</h4>
+				</div>
+				<div class="cs-section0-block cs_section0_block1" id="id_section0_block1">
+					<img src="imgs/img1_2.png" alt="">
+					<h4>通过不同的方式进行数据收集筛选，形成可用性高、正确的、规范的数据</h4>
+				</div>
+				<div class="cs-section0-block cs_section0_block2" id="id_section0_block2">
+					<img src="imgs/img1_3.png" alt="">
+					<h4>实现空间数据和非空间数据的建库、数据查询展示、数据编辑、导入导出等功能</h4>
+				</div>
+				<div class="cs-section0-block cs_section0_block3" id="id_section0_block3">
+					<img src="imgs/img1_4.png" alt="">
+					<h4>实现空间数据和非空间数据服务的发布、注册、权限管理等</h4>
+				</div>
+				<div class="cs-section0-block cs_section0_block4" id="id_section0_block4">
+					<img src="imgs/img1_5.png" alt="">
+					<h4>从物理、系统、服务、以及平台功能等四个层级对数据进行监控</h4>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+<style>
+	/* Section 1
+	* --------------------------------------- */
+	#section1 {
+		background:#effbf7;
+	}
+	#section1 h1 {
+		background-image: url(imgs/title2.png) ;
+	}
+	#section1 h2 {
+		background-image: url(imgs/title2_1.png) ;
+	}
+	#section1 > div {
+		height: 550px;
+	}
+	#section1 .cs-section1-block-circle {
+		border-radius: 50%;
+	}
+	#section1 .cs-section1-block {
+		width: calc((100% - 140px)/2);
+		height: auto;
+		position: absolute;
+		text-align: center;
+		top: 10px;
+		-webkit-transition: all 1.5s ease-out;
+		transition: all 1.5s ease-out;
+	}
+	#section1 .cs-section1-block h3,
+	#section1 .cs-section1-block h4,
+	#section1 .cs-section1-block img{
+		margin:15px auto;
+		width: 95%;
+		font-weight: normal;
+	}
+	#section1 .cs-section1-block0 {
+		left: 50%;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-150%, 0px, 0px);
+		transform: translate3d(-150%, 0px, 0px);
+	}
+	.cs-section1-block0-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(-90%, 0px, 0px)!important;
+		transform: translate3d(-90%, 0px, 0px)!important;
+	}
+	#section1 .cs-section1-block1 {
+		left: 50%;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(0%, 0px, 0px);
+		transform: translate3d(0%, 0px, 0px);
+
+		-webkit-transition: all 1s ease-out .5s;
+		transition: all 1s ease-out .5s;
+	}
+	#section1 .cs-section1-block-circle {
+		position: relative;
+		width: 100%;
+		text-align: center;
+	}
+	#section1 .cs-section1-block-circle-0 {
+		position: absolute;
+		box-sizing: border-box;
+		width: 58%;
+		background: #e0f1f8;
+		margin: 0 auto ;
+		padding-top: 30px;
+		left: 50%;
+		top: 30px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 50px, 0px);
+		transform: translate3d(-50%, 50px, 0px);
+
+		-webkit-transition: all .5s ease-out .5s;
+		transition: all .5s ease-out .5s;
+	}
+	#section1 .cs-section1-block-circle-1 {
+		position: absolute;
+		box-sizing: border-box;
+		width: 45%;
+		background: #86c2ff;
+		margin: 13% auto 0;
+		padding-top: 30px;
+		left: 50%;
+		top: 30px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 50px, 0px);
+		transform: translate3d(-50%, 50px, 0px);
+
+		-webkit-transition: all .6s ease-out 1s;
+		transition: all .6s ease-out 1s;
+	}
+	#section1 .cs-section1-block-circle-2 {
+		position: absolute;
+		box-sizing: border-box;
+		width: 31%;
+		background: #3f9eff;
+		margin: 27% auto 0;
+		padding-top: 30px;
+		left: 50%;
+		top: 30px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 50px, 0px);
+		transform: translate3d(-50%, 50px, 0px);
+
+		-webkit-transition: all .6s ease-out 1.2s;
+		transition: all .6s ease-out 1.2s;
+	}
+	#section1 .cs-section1-block-circle-3 {
+		position: absolute;
+		box-sizing: border-box;
+		width: 16%;
+		background: #1086ff;
+		margin: 42% auto 0;
+		padding-top: 30px;
+		left: 50%;
+		top: 30px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 50px, 0px);
+		transform: translate3d(-50%, 50px, 0px);
+
+		-webkit-transition: all .8s ease-out 1.5s;
+		transition: all .8s ease-out 1.5s;
+	}
+	.cs-section1-block-circle-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(-50%, 0px, 0px)!important;
+		transform: translate3d(-50%, 0px, 0px)!important;
+	}
+
+</style>
+
+	<div class="section fp-auto-height" id="section1">
+		<div>
+			<h1></h1>
+			<h2></h2>
+			<div class="cs-box">
+				<div class="cs-section1-block cs-section1-block0">
+					<h4>主要负责对不同系统、不同方式收集的数据进行管理查看，<br>可以动态的对数据进行分类</h4>
+					<img src="imgs/img2_1.png" alt="">
+				</div>
+				<div class="cs-section1-block cs-section1-block1">
+					<div class="cs-section1-block-circle">
+						<div class="cs-section1-block-circle cs-section1-block-circle-0">部门/库</div>
+					</div>
+					<div class="cs-section1-block-circle">
+						<div class="cs-section1-block-circle cs-section1-block-circle-1">数据集</div>
+					</div>
+					<div class="cs-section1-block-circle">
+						<div class="cs-section1-block-circle cs-section1-block-circle-2">数据表</div>
+					</div>
+					<div class="cs-section1-block-circle">
+						<div class="cs-section1-block-circle cs-section1-block-circle-3">数据字段</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<style>
+	/* Section 2
+	* --------------------------------------- */
+	#section2 {
+		background:#effbf7;
+	}
+	#section2 h1 {
+		background-image: url(imgs/title3.png) ;
+	}
+	#section2 h2 {
+		background-image: url(imgs/title3_1.png) ;
+	}
+	#section2 > div {
+		height: 520px;
+	}
+
+	#section2 .cs-section2-block {
+		width: calc((100% - 140px)/2);
+		height: auto;
+		position: absolute;
+		text-align: center;
+		top: 10px;
+		-webkit-transition: all 1.5s ease-out;
+		transition: all 1.5s ease-out;
+	}
+	#section2 .cs-section2-block h3,
+	#section2 .cs-section2-block h4,
+	#section2 .cs-section2-block img{
+		margin:15px auto;
+		/*width: 100%;*/
+		font-weight: normal;
+	}
+	#section2 .cs-section2-block0 {
+		left: 50%;
+		text-align: right;
+
+		/*opacity: 0;*/
+
+		-webkit-transform: translate3d(-100%, 0px, 0px);
+		transform: translate3d(-100%, 0px, 0px);
+		overflow: hidden;
+	}
+	#section2 .cs-section2-block1 {
+		left: 50%;
+
+		/*opacity: 0;*/
+
+		-webkit-transform: translate3d(0%, 0px, 0px);
+		transform: translate3d(0%, 0px, 0px);
+	}
+	#section2 .cs-section2-img-box {
+		position: relative;
+	}
+	#section2 .cs-section2-img {
+		position: absolute;
+		/*max-width:100%;*/
+		margin-top: 20px;
+	}
+	#section2 .cs-section2-img-1 {
+		left: 20px;
+		top: 35px;
+
+		opacity: 0;
+
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+
+		-webkit-transition: all 1.2s ease-out .6s;
+		transition: all 1.2s ease-out .6s;
+	}
+	.cs-section2-img-1-active {
+		opacity: 1!important;
+
+		-webkit-transform: rotate(350deg)!important;
+		transform: rotate(350deg)!important;
+	}
+	#section2 .cs-section2-img-2 {
+		left: 20px;
+		top: 35px;
+
+		opacity: 0;
+
+		-webkit-transition: all 1s ease-out .3s;
+		transition: all 1s ease-out .3s;
+	}
+	#section2 .cs-section2-img-3 {
+		left: 240px;
+		top: 35px;
+		opacity: 0;
+
+		-webkit-transition: all .6s ease-out 1.5s;
+		transition: all .6s ease-out 1.5s;
+	}
+	#section2 .cs-section2-img-4 {
+		left: 320px;
+		top: 35px;
+		opacity: 0;
+
+		-webkit-transform: scale(.3);
+		transform: scale(.3);
+
+		-webkit-transition: all .3s ease-out 1.8s;
+		transition: all .3s ease-out 1.8s;
+	}
+	.cs-section2-img-4-active {
+		opacity: 1!important;;
+
+		-webkit-transform: scale(1)!important;
+		transform: scale(1)!important;
+	}
+
+	#section2 .cs-section2-block0-mask {
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		-webkit-transform: translate3d(0%, 0px, 0px);
+		transform: translate3d(0%, 0px, 0px);
+
+		-webkit-transition: all .8s ease-out ;
+		transition: all .8s ease-out ;
+	}
+	.cs-section2-block0-mask-active {
+		-webkit-transform: translate3d(110%, 0px, 0px)!important;
+		transform: translate3d(110%, 0px, 0px)!important;
+	}
+	</style>
+
+	<div class="section fp-auto-height" id="section2">
+		<div>
+			<h1></h1>
+			<h2></h2>
+			<div class="cs-box">
+				<div class="cs-section2-block cs-section2-block0">
+					<img src="imgs/img3_1.png" alt="">
+					<div class="cs-section2-block0-mask"></div>
+				</div>
+				<div class="cs-section2-block cs-section2-block1">
+					<div class="cs-section2-img-box">
+						<img class="cs-section2-img cs-section2-img-1" src="imgs/img3_2.png">
+						<img class="cs-section2-img cs-section2-img-2" src="imgs/img3_3.png">
+						<img class="cs-section2-img cs-section2-img-3" src="imgs/img3_4.png">
+						<img class="cs-section2-img cs-section2-img-4" src="imgs/img3_5.png">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<style>
+	/* Section 3
+	* --------------------------------------- */
+	#section3 {
+		background:#effbf7;
+	}
+	#section3 h1 {
+		background-image: url(imgs/title4.png) ;
+	}
+	#section3 h2 {
+		background-image: url(imgs/title4_1.png) ;
+	}
+	#section3 > div {
+		height: 530px;
+	}
+	#section3 .cs-section3-img {
+		width: 100%;
+		height: 350px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(0%, 50px, 0px);
+		transform: translate3d(0%, 50px, 0px);
+
+		-webkit-transition: all 1s ease-out ;
+		transition: all 1s ease-out ;
+	}
+	#section3 .cs-section3-img img {
+		height: 350px;
+		max-height: 350px;
+	}
+	#section3 .cs-section3-label-1 {
+		position: absolute;
+		left: 50%;
+		top: 240px;
+		font-size: 16px;
+		font-weight: normal;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-345px, 0px, 0px);
+		transform: translate3d(-345px, 0px, 0px);
+
+		-webkit-transition: all 2.5s ease-out ;
+		transition: all 2.5s ease-out ;
+	}
+	#section3 .cs-section3-label-2 {
+		position: absolute;
+		left: 50%;
+		top: 145px;
+		font-size: 16px;
+		font-weight: normal;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-330px, 0px, 0px);
+		transform: translate3d(-330px, 0px, 0px);
+
+		-webkit-transition: all 2.5s ease-out ;
+		transition: all 2.5s ease-out ;
+	}
+	#section3 .cs-section3-label-3 {
+		position: absolute;
+		left: 50%;
+		top: 58px;
+		font-size: 16px;
+		font-weight: normal;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-275px, 0px, 0px);
+		transform: translate3d(-275px, 0px, 0px);
+
+		-webkit-transition: all 2.5s ease-out ;
+		transition: all 2.5s ease-out ;
+	}
+	#section3 .cs-section3-label-4 {
+		position: absolute;
+		left: 50%;
+		top: 58px;
+		font-size: 16px;
+		font-weight: normal;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(220px, 0px, 0px);
+		transform: translate3d(220px, 0px, 0px);
+
+		-webkit-transition: all 2.5s ease-out ;
+		transition: all 2.5s ease-out ;
+	}
+	#section3 .cs-section3-label-5 {
+		position: absolute;
+		left: 50%;
+		top: 145px;
+		font-size: 16px;
+		font-weight: normal;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(265px, 0px, 0px);
+		transform: translate3d(265px, 0px, 0px);
+
+		-webkit-transition: all 2.5s ease-out ;
+		transition: all 2.5s ease-out ;
+	}
+	#section3 .cs-section3-label-6 {
+		position: absolute;
+		left: 50%;
+		top: 240px;
+		font-size: 16px;
+		font-weight: normal;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(265px, 0px, 0px);
+		transform: translate3d(265px, 0px, 0px);
+
+		-webkit-transition: all 2.5s ease-out ;
+		transition: all 2.5s ease-out ;
+	}
+</style>
+
+	<div class="section fp-auto-height" id="section3">
+		<div>
+			<h1></h1>
+			<h2></h2>
+			<div class="cs-box">
+				<div class="cs-section3-img">
+					<img src="imgs/img4_1.png" alt="">
+				</div>
+				<div class="cs-section3-label-1">数据浏览量</div>
+				<div class="cs-section3-label-2">数据用途</div>
+				<div class="cs-section3-label-3">数据来源</div>
+				<div class="cs-section3-label-4">数据下载</div>
+				<div class="cs-section3-label-5">数据表查看</div>
+				<div class="cs-section3-label-6">数据表编辑</div>
+			</div>
+		</div>
+	</div>
+
+<style>
+	/* Section 4
+	* --------------------------------------- */
+	#section4{
+		background:#effbf7;
+	}
+	#section4 h1 {
+		background-image: url(imgs/title5.png) ;
+	}
+	#section4 h2 {
+		background-image: url(imgs/title5_1.png) ;
+	}
+	#section4 > div {
+		height: 580px;
+	}
+	#section4 .cs-section4-img-1 {
+		position: absolute;
+		z-index: 900;
+		top: 20px;
+		left: 50%;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-185%, 0px, 0px);
+		transform: translate3d(-185%, 0px, 0px);
+
+		-webkit-transition: all 1.5s ease-out ;
+		transition: all 1.5s ease-out ;
+
+	}
+	.cs-section4-img-1-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(-115%, 0px, 0px)!important;
+		transform: translate3d(-115%, 0px, 0px)!important;
+	}
+	#section4 .cs-section4-img-2 {
+		position: absolute;
+		z-index: 902;
+		top: 110px;
+		left: 50%;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(0%, 0px, 0px);
+		transform: translate3d(0%, 0px, 0px);
+
+		-webkit-transition: all 1.5s ease-out ;
+		transition: all 1.5s ease-out ;
+	}
+	.cs-section4-img-2-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(-50%, 0px, 0px)!important;
+		transform: translate3d(-50%, 0px, 0px)!important;
+	}
+	#section4 .cs-section4-img-3 {
+		position: absolute;
+		z-index: 901;
+		top: 100px;
+		left: 50%;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(50%, 0px, 0px);
+		transform: translate3d(50%, 0px, 0px);
+
+		-webkit-transition: all 1.5s ease-out ;
+		transition: all 1.5s ease-out ;
+	}
+	.cs-section4-img-3-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(0%, 0px, 0px)!important;
+		transform: translate3d(0%, 0px, 0px)!important;
+	}
+
+</style>
+
+	<div class="section fp-auto-height" id="section4">
+		<div>
+			<h1></h1>
+			<h2></h2>
+			<div class="cs-box">
+				<img class="cs-section4-img-1" src="imgs/img5_1.png"  >
+				<img class="cs-section4-img-2" src="imgs/img5_2.png"  >
+				<img class="cs-section4-img-3" src="imgs/img5_3.png"  >
+			</div>
+		</div>
+	</div>
+
+<style>
+	/* Section 5
+	* --------------------------------------- */
+	#section5 {
+		background:#effbf7;
+	}
+	#section5 h1 {
+		background-image: url(imgs/title6.png) ;
+	}
+	#section5 h2 {
+		background-image: url(imgs/title6_1.png) ;
+	}
+	#section5 > div {
+		height: 600px;
+	}
+
+	#section5 .cs-section5-block {
+		width: calc((100% - 140px)/2);
+		height: auto;
+		position: absolute;
+		text-align: center;
+		top: 10px;
+		-webkit-transition: all 1.5s ease-out;
+		transition: all 1.5s ease-out;
+	}
+	#section5 .cs-section5-block h3,
+	#section5 .cs-section5-block h4,
+	#section5 .cs-section5-block img{
+		margin:15px auto;
+		/*width: 100%;*/
+		font-weight: normal;
+	}
+	#section5 .cs-section5-block0 {
+		left: 50%;
+		text-align: right;
+
+		/*opacity: 0;*/
+
+		-webkit-transform: translate3d(-100%, 0px, 0px);
+		transform: translate3d(-100%, 0px, 0px);
+	}
+	#section5 .cs-section5-block1 {
+		left: 50%;
+		text-align: right;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(150px, 0px, 0px);
+		transform: translate3d(150px, 0px, 0px);
+
+		-webkit-transition: all 2.5s ease-out ;
+		transition: all 2.5s ease-out ;
+	}
+	#section5 .cs-section5-img-box,
+	#section5 .cs-section5-text-box {
+		position: relative;
+	}
+
+	#section5 .cs-section5-img {
+		position: absolute;
+	}
+	#section5 .cs-section5-img-0 {
+		right: 0%;
+		top: 20px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 0px, 0px);
+		transform: translate3d(-50%, 0px, 0px);
+
+		-webkit-transition: all .5s ease-out ;
+		transition: all .5s ease-out ;
+
+	}
+	.cs-section5-img-0-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(-35%, 0px, 0px)!important;
+		transform: translate3d(-35%, 0px, 0px)!important;
+	}
+	#section5 .cs-section5-img-1 {
+		right: 0%;
+		top: 60px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 0px, 0px);
+		transform: translate3d(-50%, 0px, 0px);
+
+		-webkit-transition: all .5s ease-out .5s;
+		transition: all .5s ease-out .5s;
+	}
+	.cs-section5-img-1-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(-25%, 0px, 0px)!important;
+		transform: translate3d(-25%, 0px, 0px)!important;
+	}
+	#section5 .cs-section5-img-2 {
+		right: 0%;
+		top: 85px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 0px, 0px);
+		transform: translate3d(-50%, 0px, 0px);
+
+		-webkit-transition: all .5s ease-out 1s;
+		transition: all .5s ease-out 1s;
+	}
+	.cs-section5-img-2-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(-15%, 0px, 0px)!important;
+		transform: translate3d(-15%, 0px, 0px)!important;
+	}
+	#section5 .cs-section5-img-3 {
+		right: 0%;
+		top: 118px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 0px, 0px);
+		transform: translate3d(-50%, 0px, 0px);
+
+		-webkit-transition: all .5s ease-out 1.5s;
+		transition: all .5s ease-out 1.5s;
+	}
+	.cs-section5-img-3-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(-5%, 0px, 0px)!important;
+		transform: translate3d(-5%, 0px, 0px)!important;
+	}
+	#section5 .cs-section5-img-4 {
+		right: 0%;
+		top: 145px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 0px, 0px);
+		transform: translate3d(-50%, 0px, 0px);
+
+		-webkit-transition: all .5s ease-out 2s;
+		transition: all .5s ease-out 2s;
+	}
+	.cs-section5-img-4-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(5%, 0px, 0px)!important;
+		transform: translate3d(5%, 0px, 0px)!important;
+	}
+	#section5 .cs-section5-img-5 {
+		right: 0%;
+		top: 170px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-50%, 0px, 0px);
+		transform: translate3d(-50%, 0px, 0px);
+
+		-webkit-transition: all .5s ease-out 2.5s;
+		transition: all .5s ease-out 2.5s;
+	}
+	.cs-section5-img-5-active {
+		opacity: 1!important;
+
+		-webkit-transform: translate3d(15%, 0px, 0px)!important;
+		transform: translate3d(15%, 0px, 0px)!important;
+	}
+	#section5 .cs-section5-img-8,
+	#section5 .cs-section5-img-9,
+	#section5 .cs-section5-img-10,
+	#section5 .cs-section5-img-11 {
+		float: left;
+	}
+	#section5 h4 {
+		font-weight: normal;
+		float: left;
+		margin: 0;
+		height: 30px;
+		line-height: 30px;
+	}
+	#section5 .cs-section5-text-1 {
+		position: absolute;
+		top: 80px;
+	}
+	#section5 .cs-section5-text-2 {
+		position: absolute;
+		top: 140px;
+	}
+	#section5 .cs-section5-text-3 {
+		position: absolute;
+		top: 200px;
+	}
+	#section5 .cs-section5-text-4 {
+		position: absolute;
+		top: 260px;
+	}
+</style>
+
+	<div class="section fp-auto-height" id="section5">
+		<div>
+			<h1></h1>
+			<h2></h2>
+			<div class="cs-box">
+				<div class="cs-section5-block cs-section5-block0">
+					<div class="cs-section5-img-box">
+						<img class="cs-section5-img cs-section5-img-0" src="imgs/img6_1.png">
+						<img class="cs-section5-img cs-section5-img-1" src="imgs/img6_2.png">
+						<img class="cs-section5-img cs-section5-img-2" src="imgs/img6_3.png">
+						<img class="cs-section5-img cs-section5-img-3" src="imgs/img6_4.png">
+						<img class="cs-section5-img cs-section5-img-4" src="imgs/img6_5.png">
+						<img class="cs-section5-img cs-section5-img-5" src="imgs/img6_6.png">
+					</div>
+				</div>
+				<div class="cs-section5-block cs-section5-block1">
+					<div class="cs-section5-text-box">
+						<div class="cs-section5-text-1" >
+							<img class="cs-section5-img-8" src="imgs/img6_8.png">
+							<h4>修改用户信息、管理用户</h4>
+						</div>
+						<div class="cs-section5-text-2" >
+							<img class="cs-section5-img-9" src="imgs/img6_9.png">
+							<h4>操作日志监控管理</h4>
+						</div>
+						<div class="cs-section5-text-3" >
+							<img class="cs-section5-img-10" src="imgs/img6_10.png">
+							<h4>系统、数据、服务情况统计</h4>
+						</div>
+						<div class="cs-section5-text-4" >
+							<img class="cs-section5-img-11" src="imgs/img6_11.png">
+							<h4>菜单、数据源、服务情况管理</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<style>
+/*footer */
+.Yhl{ width:80%; margin:0 auto; font-size:14px;
+}
+.Yhl h3{ font:18px/30px normal "Microsoft YaHei"
+}
+.Y_left{ width:40%; float:left
+}
+.Y_left a{ text-decoration:none; color:#333
+}
+.Y_left a:hover{ color:#03F
+}
+.Y_mid{ width:30%; float:left
+}
+.Y_right{ width:30%; float:left; text-align:center
+}
+.Y_bottom{ width:100%; float:left; border-top:#f3f3f3 solid 1px;  font:14px/50px normal "Microsoft YaHei"; padding-bottom:10px;text-align:center; background:#f9f9f9
+}
+</style>
+
+	<div class="footer">
+		<div class="Yhl">
+			<div class="Y_left">
+				<h3>友情链接</h3>
+				<p><a href="http://10.254.11.102:8080/AGis/">中新天津生态城GIS服务平台</a></p>
+				<p><a href="http://www.eco-city.gov.cn/">中新天津生态城门户网站</a></p>
+				<p><a href="http://60.29.64.140:10443/project2016/login.htm?39557.35623123204">建设计划管理系统</a></p>
+				<p><a href="10.254.12.7:8080/cz">政府投资项目资金管理系统</a></p>
+				<p><a href="172.31.11.59/mdcs/wjj.html">脉动城市</a></p>
+			</div>
+			<div class="Y_mid">
+				<h3>联系我们</h3>
+				<p>电话：022-66196056</p>
+				<p>邮编：300467</p>
+				<p>邮箱：tjzxht2012@163.com</p>
+				<p>地址：天津滨海新区中新天津生态城动漫东路355号创研大厦C座328</p>
+			</div>
+			<div class="Y_right">
+				<h3>关注我们</h3>
+				<p><img src="qrcode.png"  width="130px" height="130px"/></p>
+			</div>
+		</div>
+		<div class="Y_bottom">版权所有：天津智信慧通信息技术有限公司</div>
+	</div>
+</div>
+
+</body>
+</html>
+<!--
+	/*#id_section0_block0 {
+		left: 70px;
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-100px, 0px, 0px);
+		transform: translate3d(-100px, 0px, 0px);
+	}
+	#id_section0_block1 {
+		left: calc((100% - 140px)/5 + 70px);
+
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(-100px, 0px, 0px);
+		transform: translate3d(-100px, 0px, 0px);
+	}
+	#id_section0_block2 {
+		left: calc((100% - 140px)/5*2 + 70px);
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(0px, 100px, 0px);
+		transform: translate3d(0px, 100px, 0px);
+	}
+	#id_section0_block3 {
+		left: calc((100% - 140px)/5*3 + 70px);
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(100px, 0px, 0px);
+		transform: translate3d(100px, 0px, 0px);
+	}
+	#id_section0_block4 {
+		left: calc((100% - 140px)/5*4 + 70px);
+
+		opacity: 0;
+
+		-webkit-transform: translate3d(100px, 0px, 0px);
+		transform: translate3d(100px, 0px, 0px);
+	}*/ -->
